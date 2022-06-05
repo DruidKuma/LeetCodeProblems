@@ -1,0 +1,53 @@
+package com.druidkuma.leetcode.algorithms.algorithm1.bfsdfs;
+
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+/**
+ * 116
+ *
+ * You are given a perfect binary tree where all leaves are on the same level, and every parent has two children.
+ * Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+ * Initially, all next pointers are set to NULL.
+ */
+public class PopulatingNextRightPointersInEachNode {
+    public Node connect(Node root) {
+        if (root == null) return null;
+
+        Queue<Node> queue = new LinkedList<>() {{ offer(root); }};
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                Node source = queue.poll();
+                if (i < size - 1) {
+                    source.next = queue.peek();
+                }
+                if (source.left != null && source.right != null) {
+                    queue.offer(source.left);
+                    queue.offer(source.right);
+                }
+            }
+        }
+        return root;
+    }
+
+    @EqualsAndHashCode
+    @ToString
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class Node {
+        public int val;
+        public Node left;
+        public Node right;
+        public Node next;
+
+        public Node(int _val) {
+            val = _val;
+        }
+    };
+}
