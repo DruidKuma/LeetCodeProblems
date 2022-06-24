@@ -1,4 +1,4 @@
-package com.druidkuma.leetcode.linkedlist;
+package com.druidkuma.leetcode.binarytree;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -10,17 +10,15 @@ import lombok.ToString;
  *
  * @author DruidKuma
  * @version 1.0.0
- * @since 6/17/22
+ * @since 6/19/22
  */
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @EqualsAndHashCode
-public class ListNode {
+@ToString
+@AllArgsConstructor
+public class TreeNode {
     public int val;
-    public ListNode next;
-    public ListNode(int x) {
-        val = x;
-        next = null;
-    }
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int val) { this.val = val; }
 }
