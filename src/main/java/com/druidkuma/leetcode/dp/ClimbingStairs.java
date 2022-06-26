@@ -1,5 +1,8 @@
 package com.druidkuma.leetcode.dp;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 70
  *
@@ -18,5 +21,14 @@ public class ClimbingStairs {
             arr[1] = next;
         }
         return n == 1 ? arr[0] : arr[1];
+    }
+
+    public int climbStairsRecur(int n) {
+        return helper(n, new HashMap<>(Map.of(1, 1, 2, 2)));
+    }
+
+    private int helper(int n, Map<Integer, Integer> memo) {
+        if(!memo.containsKey(n)) memo.put(n, helper(n - 1, memo) + helper(n - 2, memo));
+        return memo.get(n);
     }
 }
