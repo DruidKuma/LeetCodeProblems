@@ -22,6 +22,21 @@ public class GenerateParentheses {
         return ans;
     }
 
+    public List<String> generateParenthesis2(int n) {
+        List<String> list = new ArrayList<>();
+        helper(list,n,0,0,"");
+        return list;
+    }
+    void helper(List<String> list, int n, int open, int close, String current){
+        if(current.length() == n * 2){
+            list.add(current);
+            return;
+        }
+        if(open < n) helper(list, n,open + 1, close,current+"(");
+        if(close < open) helper(list, n, open,close + 1,current+")");
+    }
+
+
     public List<String> generateParenthesisBruteForce(int n) {
         List<String> combinations = new ArrayList<>();
         generateAll(new char[2 * n], 0, combinations);

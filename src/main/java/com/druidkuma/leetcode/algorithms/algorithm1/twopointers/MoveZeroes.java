@@ -9,6 +9,22 @@ package com.druidkuma.leetcode.algorithms.algorithm1.twopointers;
  */
 public class MoveZeroes {
 
+    public int[] moveZerosOptimalUnderstandable(int[] nums) {
+        int lastNonZeroFoundAt = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                swap(nums, lastNonZeroFoundAt++, i);
+            }
+        }
+        return nums;
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
     public int[] moveZerosOptimal(int[] nums) {
         int lastZeroIndex = 0;
         for (int i = 0; i < nums.length; i++) {
