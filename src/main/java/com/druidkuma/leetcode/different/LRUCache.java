@@ -1,6 +1,7 @@
 package com.druidkuma.leetcode.different;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -95,5 +96,27 @@ public class LRUCache {
         int value;
         DListNode next;
         DListNode prev;
+    }
+
+    private static class EasyLRU extends LinkedHashMap<Integer, Integer> {
+        private int capacity;
+
+        public EasyLRU(int capacity) {
+            super(capacity, 0.75f, true);
+            this.capacity = capacity;
+        }
+
+        public int get(int key) {
+            return super.getOrDefault(key, -1);
+        }
+
+        public void put(int key, int value) {
+            super.put(key, value);
+        }
+
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+            return size() > capacity;
+        }
     }
 }

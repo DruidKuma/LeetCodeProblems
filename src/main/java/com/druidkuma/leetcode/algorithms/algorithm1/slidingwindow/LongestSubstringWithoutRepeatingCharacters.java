@@ -1,6 +1,8 @@
 package com.druidkuma.leetcode.algorithms.algorithm1.slidingwindow;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -10,6 +12,22 @@ import java.util.Set;
  */
 public class LongestSubstringWithoutRepeatingCharacters {
     public int lengthOfLongestSubstring(String s) {
+        Map<Character, Integer> map= new HashMap<>();
+        int start=0, len=0;
+
+        for(int i=0; i<s.length(); i++) {
+            char c = s.charAt(i);
+            if (map.getOrDefault(c, -1) >= start) {
+                start = map.get(c) + 1;
+            }
+            len = Math.max(len, i-start+1);
+            map.put(c, i);
+        }
+
+        return len;
+    }
+
+    public int lengthOfLongestSubstringBruteForce(String s) {
         int max = 0;
 
         int index = 0;

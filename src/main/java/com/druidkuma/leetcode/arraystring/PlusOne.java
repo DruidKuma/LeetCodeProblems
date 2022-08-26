@@ -9,6 +9,23 @@ package com.druidkuma.leetcode.arraystring;
  */
 public class PlusOne {
     public int[] plusOne(int[] digits) {
+        int n = digits.length;
+
+        for (int idx = n - 1; idx >= 0; --idx) {
+            if (digits[idx] == 9) {
+                digits[idx] = 0;
+            }
+            else {
+                digits[idx]++;
+                return digits;
+            }
+        }
+        digits = new int[n + 1];
+        digits[0] = 1;
+        return digits;
+    }
+
+    public int[] plusOneOld(int[] digits) {
         int reminder = 1;
         for (int i = digits.length - 1; i >= 0; i--) {
             digits[i] += reminder;
