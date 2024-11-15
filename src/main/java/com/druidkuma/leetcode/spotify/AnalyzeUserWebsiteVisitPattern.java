@@ -10,8 +10,6 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 /**
- * 1152
- *
  * You are given two string arrays username and website and an integer array timestamp. All the given arrays are of the same length and the tuple [username[i], website[i], timestamp[i]] indicates that the user username[i] visited the website website[i] at time timestamp[i].
  *
  * A pattern is a list of three websites (not necessarily distinct).
